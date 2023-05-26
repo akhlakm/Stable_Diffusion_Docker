@@ -2,17 +2,21 @@
 
 CNAME=kohya
 
+# a global cache across multiple docker containers
 HOSTC=/home/hdd/_cache
-HOSTD=/home/hdd/stable-diffusion/kohya
-HOSTE=/home/hdd/stable-diffusion/automatic
 
+# persistent volume between runs that contains python
+# virtual environment and download models
+HOSTD=/home/hdd/stable-diffusion/kohya
 mkdir -p $HOSTD/venv
 mkdir -p $HOSTD/data
 
 # this should be the models directory of the webui
 # so we can reuse the downloaded models
+HOSTE=/home/hdd/stable-diffusion/automatic
 mkdir -p $HOSTE/models
 
+# clone the git repository or pull the latest version
 pull() {
     if [[ -d kohya_ss ]]; then 
         cd kohya_ss/
@@ -23,6 +27,7 @@ pull() {
     fi
 }
 
+# rebuild the docker image
 build() {
     export BUILDKIT_PROGRESS=plain && docker build -t $CNAME -f Dockerfile .
 }
@@ -37,8 +42,11 @@ run() {
         $CNAME "$@"
 }
 
+# attach to the running container
 attach() {
-    docker exec -it $CNAME /bin/bash
+    # parse the id first
+    cid=$(docker ps -aqf "name=$CNAME")
+    docker exec -it $cid /bin/bash
 }
 
 "$@"
