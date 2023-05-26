@@ -10,7 +10,7 @@ else
     source venv/bin/activate || exit 100
 fi
 
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:/usr/lib/x86_64-linux-gnu/"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/lib/x86_64-linux-gnu/"
 
 exec "$@"
-python kohya_gui.py --listen 0.0.0.0 --server_port 7860
+python kohya_gui.py --listen 0.0.0.0 --server_port 7860 --headless
