@@ -39,6 +39,7 @@ run() {
         -v $HOSTD/data/:/home/user/app/data/ \
         -v $HOSTE/models/:/home/user/app/models/ \
         -p 8889:7860 \
+        -p 8890:6006 \
         $CNAME "$@"
 }
 
