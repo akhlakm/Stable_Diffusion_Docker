@@ -9,4 +9,5 @@ else
 fi
 
 exec "$@"
-bash webui.sh --xformers --listen --enable-insecure-extension-access
+# bash webui.sh --listen --enable-insecure-extension-access --xformers --no-half
+python webui.py --listen --enable-insecure-extension-access --xformers --no-half
