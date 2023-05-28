@@ -1,0 +1,13 @@
+# --n Treat everything until the next option as a negative prompt.
+# --w Specify the width of the generated image.
+# --h Specify the height of the generated image.
+# --d Specify the seed for the generated image.
+# --l Specify the CFG scale for the generated image.
+# --s Specify the number of steps during generation.
+
+
+# prompt 1
+masterpiece, best quality, 1girl --n bad anatomy, bad composition, poor, low effort --w 512 --h 512 --d 1 --l 7.5 --s 8
+
+# prompt 2
+masterpiece, best quality, 1girl, looking back --n low quality, worst quality, bad anatomy, bad composition, poor, low effort --w 384 --h 512 --d 2 --l 5.5 --s 20
