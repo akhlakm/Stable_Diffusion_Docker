@@ -2,20 +2,15 @@
 
 CNAME=sdiff
 
+WORKD=./app
 HOSTC=/home/work/_cache
 HOSTD=/home/data/stable_diffusion/automatic
-
-WORKD=./app
 
 mkdir -p $HOSTD/venv
 mkdir -p $HOSTD/models
 mkdir -p $HOSTD/outputs
 mkdir -p $HOSTD/extensions
 mkdir -p $HOSTD/repositories
-
-build() {
-    export BUILDKIT_PROGRESS=plain && docker build -t $CNAME -f Dockerfile .
-}
 
 run() {
     docker run -it --gpus all \
@@ -28,6 +23,10 @@ run() {
         -v $HOSTD/repositories/:/home/user/app/repositories/ \
         -p 8888:7860 \
         $CNAME "$@"
+}
+
+build() {
+    export BUILDKIT_PROGRESS=plain && docker build -t $CNAME -f Dockerfile .
 }
 
 # clone the git repository or pull the latest version

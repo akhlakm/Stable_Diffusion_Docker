@@ -32,16 +32,6 @@ ENV PATH="/home/user/.local/bin:${PATH}"
 ARG PATH="/home/user/.local/bin:${PATH}"
 SHELL [ "/bin/bash", "-c" ]
 
-# Code server
-# WORKDIR /home/user
-# ENV PATH="$PATH:/home/user/.vscode-server/bin"
-# ARG PATH="$PATH:/home/user/.vscode-server/bin"
-# USER user
-# COPY code-server.sh code-server.sh
-# RUN bash code-server.sh
-# RUN code-server --install-extension ms-python.python
-# RUN code-server --install-extension ms-toolsai.jupyter
-
 # App dependencies for tensorflow
 # RUN apt-get install -y python3-libnvinfer-dev
 # RUN ln -s /usr/lib/x86_64-linux-gnu/libnvinfer_lean.so.8 /usr/lib/x86_64-linux-gnu/libnvinfer.so.7
