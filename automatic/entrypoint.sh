@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Setup runtime environment
-cd /home/user/app
 
-if [ -f venv/bin/activate ]; then
-    source venv/bin/activate || exit 101
-else
-    python3 -m venv venv || exit 102
-    source venv/bin/activate || exit 103
+if [ ! -f venv/bin/activate ]; then
+    echo "Setting up VENV ..."
+    python3 -m venv venv || exit 101
 fi
+
+source venv/bin/activate || exit 102
+cd /home/user/app
 
 exec "$@"
 bash webui.sh --listen --enable-insecure-extension-access --xformers --no-half

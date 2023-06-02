@@ -21,7 +21,7 @@ run() {
     docker run -it --gpus all \
         -v $WORKD/:/home/user/app/ \
         -v $HOSTC:/home/user/.cache/ \
-        -v $HOSTD/venv/:/home/user/app/venv/ \
+        -v $HOSTD/venv/:/home/user/venv/ \
         -v $HOSTD/models/:/home/user/app/models/ \
         -v $HOSTD/outputs/:/home/user/app/outputs/ \
         -v $HOSTD/extensions/:/home/user/app/extensions/ \
