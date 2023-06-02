@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Setup runtime environment
+cd /home/user/app
+
 if [ -f venv/bin/activate ]; then
     source venv/bin/activate || exit 101
 else
@@ -9,5 +11,5 @@ else
 fi
 
 exec "$@"
-# bash webui.sh --listen --enable-insecure-extension-access --xformers --no-half
-python webui.py --listen --enable-insecure-extension-access --xformers --no-half
+bash webui.sh --listen --enable-insecure-extension-access --xformers --no-half
+# python webui.py --listen --enable-insecure-extension-access --xformers --no-half
