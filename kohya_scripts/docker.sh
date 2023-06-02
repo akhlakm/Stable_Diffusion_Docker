@@ -3,21 +3,22 @@
 CNAME=kohya_ss
 
 # a global cache across multiple docker containers
-HOSTC=/home/hdd/_cache
+HOSTC=/home/work/_cache
 
 # persistent volume between runs that contains python
 # virtual environment and download models
-HOSTD=/home/hdd/stable-diffusion/kohya_scripts
+HOSTD=/home/data/stable-diffusion/kohya_scripts
 mkdir -p $HOSTD/venv
 mkdir -p $HOSTD/data
 
 # this should be the models directory of the webui
 # so we can reuse the downloaded models
-HOSTE=/home/hdd/stable-diffusion/automatic
+HOSTE=/home/data/stable-diffusion/automatic
 mkdir -p $HOSTE/models
 
 # the working scripts directory
 HOSTS=./scripts
+WORKD=./app
 
 # clone the git repository or pull the latest version
 pull() {
@@ -37,11 +38,12 @@ build() {
 
 run() {
     docker run -it --gpus all \
+        -v $WORKD/:/home/user/app/ \
         -v $HOSTC:/home/user/.cache/ \
         -v $HOSTS:/home/user/scripts/ \
-        -v $HOSTD/venv/:/home/user/app/venv/ \
-        -v $HOSTD/data/:/home/user/app/data/ \
-        -v $HOSTE/models/:/home/user/app/models/ \
+        -v $HOSTD/venv/:/home/user/venv/ \
+        -v $HOSTD/data/:/home/user/data/ \
+        -v $HOSTE/models/:/home/user/models/ \
         -p 8889:7860 \
         -p 8890:6006 \
         $CNAME "$@"

@@ -5,8 +5,8 @@ Name=finger0.1          # Name of the lora file
 Workdir=data/finger     # working directory
 
 Script=train_network.py
-Model=models/Stable-diffusion/v1-5-pruned-emaonly.safetensors
-Outdir=models/Lora      # lora save directory, should be in web ui
+Model=../models/Stable-diffusion/v1-5-pruned-emaonly.safetensors
+Outdir=../models/Lora      # lora save directory, should be in web ui
 
 args+=(--pretrained_model_name_or_path $Model)
 args+=(--train_data_dir $Workdir/img)
