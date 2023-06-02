@@ -12,7 +12,7 @@ args+=(--pretrained_model_name_or_path $Model)
 args+=(--train_data_dir $Workdir/img)
 args+=(--output_dir $Outdir --output_name $Name)
 
-args+=(--resume $Outdir/$Name-state)      # uncomment to resume from the last run
+# args+=(--resume $Outdir/$Name-state)      # uncomment to resume from the last run
 
 args+=(--dataset_repeats 2)
 args+=(--train_batch_size 2)
@@ -20,7 +20,7 @@ args+=(--train_batch_size 2)
 args+=(--max_train_epochs 1)
 # args+=(--max_train_steps 300)
 
-args+=(--max_token_length 225)
+args+=(--max_token_length 150)
 args+=(--tokenizer_cache_dir /tmp/tokens)
 
 # args+=(--keep_tokens 5)
@@ -90,8 +90,8 @@ args+=(--gradient_checkpointing)
 args+=(--gradient_accumulation_steps 5)
 
 args+=(--network_module networks.lora)      # type of lora, the python package
-args+=(--network_dim 420)
-args+=(--network_alpha 420)
+args+=(--network_dim 256)
+args+=(--network_alpha 256)
 
 # args+=(--debug_dataset)                     # uncomment to see captions setup
 
